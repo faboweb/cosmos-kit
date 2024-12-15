@@ -70,6 +70,9 @@ export abstract class WalletBase extends StateBase {
   }
 
   initClientError(error: Error | undefined) {
+    if (error.message === 'Client Not Exist!') {
+        return
+    }
     this.logger?.error(
       `${this.walletPrettyName} initClientError: ${error?.message}`
     );
